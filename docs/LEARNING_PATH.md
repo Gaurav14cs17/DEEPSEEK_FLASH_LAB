@@ -55,7 +55,7 @@ even though the real model has hundreds of billions of parameters.
 
 **Goal:** turn text into integers, then integers into vectors.
 
-Read: `DeepSeekFlashV4-Mini/model/embedding.py`
+Read: `packages/deepseek_flash_v4_mini/model/embedding.py`
 
 Run:
 ```bash
@@ -163,7 +163,7 @@ Exercises: 7 and 8 in [`EXERCISES.md`](EXERCISES.md).
 Run:
 ```bash
 python scripts/verify_stage01.py
-cd DeepSeekFlashV4-Mini
+cd packages/deepseek_flash_v4_mini
 python training/stage01_train.py
 ```
 
@@ -209,14 +209,14 @@ Exercises: 9 and 10 in [`EXERCISES.md`](EXERCISES.md).
 **Goal:** see what changes in the newer model family.
 
 Read:
-- `DeepSeekFlashV4.1-Mini/paper_notes/ced.md`
-- `DeepSeekFlashV4.1-Mini/paper_notes/csa2.md`
-- `DeepSeekFlashV4.1-Mini/paper_notes/fp4_kv.md`
-- `DeepSeekFlashV4.1-Mini/paper_notes/swa_replay.md`
+- `packages/deepseek_flash_v4_1_mini/paper_notes/ced.md`
+- `packages/deepseek_flash_v4_1_mini/paper_notes/csa2.md`
+- `packages/deepseek_flash_v4_1_mini/paper_notes/fp4_kv.md`
+- `packages/deepseek_flash_v4_1_mini/paper_notes/swa_replay.md`
 
 Run:
 ```bash
-cd DeepSeekFlashV4.1-Mini
+cd packages/deepseek_flash_v4_1_mini
 python benchmarks/v4_vs_v4_1.py
 ```
 

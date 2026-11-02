@@ -17,7 +17,7 @@ def _load_yaml(name: str) -> dict:
 
 
 def test_v4_config_head_math():
-    V4Config = import_from_pkg("DeepSeekFlashV4-Mini", "model.config").V4Config
+    V4Config = import_from_pkg("deepseek_flash_v4_mini", "model.config").V4Config
     cfg = V4Config()
     assert cfg.d_model % cfg.n_heads == 0
     assert cfg.d_model == cfg.n_heads * cfg.d_head
@@ -33,13 +33,13 @@ def test_v4_tiny_yaml_consistent():
 
 
 def test_v4_invalid_heads_fail():
-    V4Config = import_from_pkg("DeepSeekFlashV4-Mini", "model.config").V4Config
+    V4Config = import_from_pkg("deepseek_flash_v4_mini", "model.config").V4Config
     with pytest.raises(AssertionError):
         V4Config(d_model=65, n_heads=4, d_head=16)
 
 
 def test_v41_config_head_math():
-    V41Config = import_from_pkg("DeepSeekFlashV4.1-Mini", "model.config").ToyConfig
+    V41Config = import_from_pkg("deepseek_flash_v4_1_mini", "model.config").ToyConfig
     cfg = V41Config()
     assert cfg.d_model == cfg.n_heads * cfg.d_head
     assert len(cfg.encoder_csa_modes) == cfg.n_encoder_layers
@@ -49,6 +49,6 @@ def test_v41_config_head_math():
 
 def test_v41_layer_override_without_modes_fails():
     """Documented failure mode: changing layer counts without mode lists."""
-    V41Config = import_from_pkg("DeepSeekFlashV4.1-Mini", "model.config").ToyConfig
+    V41Config = import_from_pkg("deepseek_flash_v4_1_mini", "model.config").ToyConfig
     with pytest.raises(AssertionError):
         V41Config(n_decoder_layers=2)  # default modes still length 4

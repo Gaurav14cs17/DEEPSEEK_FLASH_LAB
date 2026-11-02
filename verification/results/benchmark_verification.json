@@ -1,14 +1,14 @@
 {
   "hardware": {
     "python": "3.12.11",
-    "platform": "Linux-7.2.4-100.fc43.x86_64-x86_64-with-glibc2.42",
+    "platform": "Linux-7.2.8-100.fc43.x86_64-x86_64-with-glibc2.42",
     "torch": "2.13.0+cu130",
     "cuda_available": false,
     "gpu_name": null,
     "gpu_vram_gb": null
   },
   "micro_latency": {
-    "prefill_T64_ms": 7.496
+    "prefill_T64_ms": 6.395
   },
   "stage01_baseline_exists": true,
   "stage01_baseline": {

@@ -12,7 +12,7 @@ from reference import cosine_sim, max_mean_abs, reference_causal_attention
 
 
 def test_attention_shapes():
-    attn = import_from_pkg("DeepSeekFlashV4-Mini", "model.attention")
+    attn = import_from_pkg("deepseek_flash_v4_mini", "model.attention")
     m = attn.CausalSelfAttention(64, 4, 16, use_rope=True)
     x = torch.randn(2, 11, 64)
     assert m(x).shape == x.shape
@@ -21,7 +21,7 @@ def test_attention_shapes():
 
 
 def test_core_scores_match_reference():
-    rope = import_from_pkg("DeepSeekFlashV4-Mini", "model.rope")
+    rope = import_from_pkg("deepseek_flash_v4_mini", "model.rope")
     torch.manual_seed(1)
     B, H, T, D = 2, 2, 7, 8
     q = torch.randn(B, H, T, D)
@@ -39,7 +39,7 @@ def test_core_scores_match_reference():
 
 
 def test_causal_leakage_prefix_invariant():
-    attn = import_from_pkg("DeepSeekFlashV4-Mini", "model.attention")
+    attn = import_from_pkg("deepseek_flash_v4_mini", "model.attention")
     torch.manual_seed(2)
     m = attn.CausalSelfAttention(32, 2, 16, use_rope=True)
     m.eval()
@@ -53,7 +53,7 @@ def test_causal_leakage_prefix_invariant():
 
 
 def test_swa_window_blocks_distant_past():
-    attn = import_from_pkg("DeepSeekFlashV4-Mini", "model.attention")
+    attn = import_from_pkg("deepseek_flash_v4_mini", "model.attention")
     torch.manual_seed(3)
     m = attn.SlidingWindowAttention(16, 1, 16, window=1, use_rope=False)
     x = torch.randn(1, 3, 16)

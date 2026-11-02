@@ -8,8 +8,8 @@ from pkg_import import import_from_pkg
 
 
 def test_forward_reproducible_eval():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     cfg = cfg_mod.V4Config(vocab_size=24, n_layers=4, max_seq_len=16, dropout=0.0)
 
     def run(seed: int):
@@ -26,8 +26,8 @@ def test_forward_reproducible_eval():
 
 
 def test_different_seeds_differ():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     cfg = cfg_mod.V4Config(vocab_size=24, n_layers=4, max_seq_len=16, dropout=0.0)
     torch.manual_seed(1)
     m1 = model_mod.DeepSeekFlashV4Mini(cfg).eval()

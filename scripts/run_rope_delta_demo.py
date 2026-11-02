@@ -18,7 +18,7 @@ import torch
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
-sys.path.insert(0, str(REPO / "DeepSeekFlashV4-Mini"))
+sys.path.insert(0, str(REPO / "packages"))
 
 from bench.delta import compare_metrics, format_table, verdict  # noqa: E402
 from bench.history import append_history  # noqa: E402
@@ -27,7 +27,7 @@ from bench.memory import collect_memory  # noqa: E402
 from bench.protocol import ExperimentMeta, save_result_bundle  # noqa: E402
 from bench.regression import check_regression  # noqa: E402
 from bench.report import write_optimization_report  # noqa: E402
-from model.rope import apply_rope, rope_freqs, rope_reference_rotate_half  # noqa: E402
+from deepseek_flash_v4_mini.model.rope import apply_rope, rope_freqs, rope_reference_rotate_half  # noqa: E402
 
 
 def num_errors(a: torch.Tensor, b: torch.Tensor) -> dict:

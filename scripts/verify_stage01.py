@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-V4 = REPO / "DeepSeekFlashV4-Mini"
+V4 = REPO / "packages" / "deepseek_flash_v4_mini"
 
 
 def run(cmd: list[str], cwd: Path) -> None:

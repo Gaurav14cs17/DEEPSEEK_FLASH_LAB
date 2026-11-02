@@ -8,9 +8,9 @@ from pkg_import import import_from_pkg
 
 
 def test_prompt_to_decode_pipeline():
-    tok_mod = import_from_pkg("DeepSeekFlashV4-Mini", "tokenizer")
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    tok_mod = import_from_pkg("deepseek_flash_v4_mini", "tokenizer")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
 
     text = "The cat sat"
     tok = tok_mod.CharTokenizer.from_text(text + " on the mat.")
@@ -30,8 +30,8 @@ def test_prompt_to_decode_pipeline():
 
 
 def test_greedy_ish_temperature_near_zero():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     torch.manual_seed(1)
     cfg = cfg_mod.V4Config(vocab_size=32, n_layers=4, max_seq_len=24)
     m = model_mod.DeepSeekFlashV4Mini(cfg).eval()

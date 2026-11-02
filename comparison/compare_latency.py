@@ -15,12 +15,12 @@ def bench(model, x, n=10):
             model(x, trace=False)
     return (time.perf_counter() - t0) * 1000 / n
 
-V4, p4 = load("DeepSeekFlashV4-Mini", "DeepSeekFlashV4Mini")
+V4, p4 = load("deepseek_flash_v4_mini", "DeepSeekFlashV4Mini")
 m4 = V4(p4("demo"))
 x = torch.randint(0, m4.cfg.vocab_size, (2, 32))
 print(f"V4-Mini   {bench(m4, x):.2f} ms")
 
-V41, p41 = load("DeepSeekFlashV4.1-Mini", "DeepSeekFlashV41Mini")
+V41, p41 = load("deepseek_flash_v4_1_mini", "DeepSeekFlashV41Mini")
 cfg = p41("demo"); cfg.use_vision = False
 m41 = V41(cfg)
 x = torch.randint(0, m41.cfg.vocab_size, (2, 32))

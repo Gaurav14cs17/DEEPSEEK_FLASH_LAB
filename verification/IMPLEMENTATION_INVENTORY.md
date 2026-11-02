@@ -16,7 +16,7 @@ Generated from repository inspection + `python verification/run_full_verificatio
 
 | Component | File(s) | Implemented | Tested | Benchmarked | Status |
 | --------- | ------- | ----------: | -----: | ----------: | ------ |
-| Tokenizer (char) | `DeepSeekFlashV4-Mini/tokenizer/` | Yes | Yes (`verification/tests/test_tokenizer.py`) | No | ⚠️ PASS WITH SIMPLIFICATION |
+| Tokenizer (char) | `packages/deepseek_flash_v4_mini/tokenizer/` | Yes | Yes (`verification/tests/test_tokenizer.py`) | No | ⚠️ PASS WITH SIMPLIFICATION |
 | Embedding | `V4/model/embedding.py` | Yes | Yes (Stage-1 + verification) | Stage-1 B0 | ✅ PASS |
 | RMSNorm | `V4/model/normalization.py` | Yes | Yes | Stage-1 B0 | ✅ PASS |
 | RoPE | `V4/model/rope.py`, `V4.1/model/rope.py` | Yes | Yes (ref + Stage-1) | RoPE A0/A1 Δ | ✅ PASS |

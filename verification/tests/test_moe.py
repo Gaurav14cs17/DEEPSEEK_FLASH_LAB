@@ -8,7 +8,7 @@ from pkg_import import import_from_pkg
 
 
 def test_shared_experts_always_active():
-    se_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.shared_experts")
+    se_mod = import_from_pkg("deepseek_flash_v4_mini", "model.shared_experts")
     se = se_mod.SharedExperts(32, n_shared=2, hidden=64)
     x = torch.randn(5, 32)
     y = se(x)
@@ -17,7 +17,7 @@ def test_shared_experts_always_active():
 
 
 def test_moe_shape_and_finite():
-    moe_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.moe")
+    moe_mod = import_from_pkg("deepseek_flash_v4_mini", "model.moe")
     m = moe_mod.MoE(32, n_routed=4, n_shared=1, n_activated=2, hidden=64, vocab_size=16)
     x = torch.randn(2, 8, 32)
     tokens = torch.randint(0, 16, (2, 8))
@@ -27,7 +27,7 @@ def test_moe_shape_and_finite():
 
 
 def test_moe_active_params_less_than_total():
-    moe_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.moe")
+    moe_mod = import_from_pkg("deepseek_flash_v4_mini", "model.moe")
     m = moe_mod.MoE(32, n_routed=8, n_shared=1, n_activated=2, hidden=64)
     total = sum(p.numel() for p in m.parameters())
     shared = sum(p.numel() for p in m.shared.parameters())
@@ -38,7 +38,7 @@ def test_moe_active_params_less_than_total():
 
 
 def test_expert_gradient_flows():
-    exp = import_from_pkg("DeepSeekFlashV4-Mini", "model.experts")
+    exp = import_from_pkg("deepseek_flash_v4_mini", "model.experts")
     e = exp.Expert(16, 32)
     x = torch.randn(4, 16, requires_grad=True)
     e(x).sum().backward()

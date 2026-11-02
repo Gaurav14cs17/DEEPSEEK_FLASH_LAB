@@ -13,7 +13,7 @@ first four files.
 
 | Order | File | One-line purpose |
 |------:|------|------------------|
-| 1 | `DeepSeekFlashV4-Mini/tokenizer/tokenizer.py` | text ↔ integer IDs |
+| 1 | `packages/deepseek_flash_v4_mini/tokenizer/tokenizer.py` | text ↔ integer IDs |
 | 2 | `model/embedding.py` | IDs → vectors |
 | 3 | `model/normalization.py` | keep vector scale stable |
 | 4 | `model/rope.py` | encode position by rotation |
@@ -28,7 +28,7 @@ first four files.
 
 ## 1. Tokenizer
 
-**File:** `DeepSeekFlashV4-Mini/tokenizer/tokenizer.py`
+**File:** `packages/deepseek_flash_v4_mini/tokenizer/tokenizer.py`
 
 ```python
 tok = CharTokenizer.from_text("the cat sat")
@@ -291,7 +291,7 @@ point.
 
 ## 12. V4.1 differences
 
-The `DeepSeekFlashV4.1-Mini/` package reuses the same primitives and adds:
+The `packages/deepseek_flash_v4_1_mini/` package reuses the same primitives and adds:
 
 | File | Idea |
 |------|------|

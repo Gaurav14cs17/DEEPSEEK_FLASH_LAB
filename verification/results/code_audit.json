@@ -1,91 +1,91 @@
 [
   {
-    "path": "DeepSeekFlashV4-Mini/model/compression.py",
+    "path": "packages/deepseek_flash_v4_mini/model/compression.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4-Mini/model/dsa.py",
+    "path": "packages/deepseek_flash_v4_mini/model/dsa.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/model/csa2.py",
+    "path": "packages/deepseek_flash_v4_1_mini/model/csa2.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/model/causal_encoder.py",
+    "path": "packages/deepseek_flash_v4_1_mini/model/causal_encoder.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/model/ced.py",
+    "path": "packages/deepseek_flash_v4_1_mini/model/ced.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/model/vision_encoder.py",
+    "path": "packages/deepseek_flash_v4_1_mini/model/vision_encoder.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/model/multimodal_fusion.py",
+    "path": "packages/deepseek_flash_v4_1_mini/model/multimodal_fusion.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/optimization/fp4_kv_cache.py",
+    "path": "packages/deepseek_flash_v4_1_mini/optimization/fp4_kv_cache.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/optimization/csa2_cache.py",
+    "path": "packages/deepseek_flash_v4_1_mini/optimization/csa2_cache.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/optimization/swa_replay.py",
+    "path": "packages/deepseek_flash_v4_1_mini/optimization/swa_replay.py",
     "kind": "DEFERRED_OR_NOT_IMPLEMENTED",
     "detail": "Module raises NotImplementedError or marks DEFERRED=True"
   },
   {
-    "path": "DeepSeekFlashV4-Mini/tests/test_compression.py",
+    "path": "packages/deepseek_flash_v4_mini/tests/test_compression.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4-Mini/tests/test_dsa.py",
+    "path": "packages/deepseek_flash_v4_mini/tests/test_dsa.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/tests/test_ced.py",
+    "path": "packages/deepseek_flash_v4_1_mini/tests/test_ced.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/tests/test_csa2.py",
+    "path": "packages/deepseek_flash_v4_1_mini/tests/test_csa2.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/tests/test_fp4_kv.py",
+    "path": "packages/deepseek_flash_v4_1_mini/tests/test_fp4_kv.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/tests/test_swa_replay.py",
+    "path": "packages/deepseek_flash_v4_1_mini/tests/test_swa_replay.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/tests/test_multimodal.py",
+    "path": "packages/deepseek_flash_v4_1_mini/tests/test_multimodal.py",
     "kind": "SOFT_PASS_TEST",
     "detail": "Deferred test soft-passes with assert True"
   },
   {
-    "path": "DeepSeekFlashV4.1-Mini/model/_transformer.py:305",
+    "path": "packages/deepseek_flash_v4_1_mini/model/_transformer.py:305",
     "kind": "SUSPICIOUS",
     "detail": "pass"
   }

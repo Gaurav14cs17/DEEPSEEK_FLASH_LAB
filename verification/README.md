@@ -1,6 +1,6 @@
 # Verification suite
 
-Independent audit of DeepSeekFlashV4-Mini / DeepSeekFlashV4.1-Mini.
+Independent audit of deepseek_flash_v4_mini / deepseek_flash_v4_1_mini.
 
 ## Commands
 

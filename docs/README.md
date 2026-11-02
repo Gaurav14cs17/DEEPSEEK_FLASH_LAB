@@ -15,5 +15,5 @@ Official paper extract for this lab:
 
 Paper → Mini mapping starts in:
 
-- `DeepSeekFlashV4-Mini/paper_notes/`
-- `DeepSeekFlashV4.1-Mini/paper_notes/`
+- `packages/deepseek_flash_v4_mini/paper_notes/`
+- `packages/deepseek_flash_v4_1_mini/paper_notes/`

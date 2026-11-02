@@ -35,9 +35,9 @@ def hardware() -> dict:
 
 
 def micro_bench() -> dict:
-    sys.path.insert(0, str(ROOT / "DeepSeekFlashV4-Mini"))
-    from model.config import V4Config
-    from model.model import DeepSeekFlashV4Mini
+    sys.path.insert(0, str(ROOT / "packages"))
+    from deepseek_flash_v4_mini.model.config import V4Config
+    from deepseek_flash_v4_mini.model.model import DeepSeekFlashV4Mini
 
     cfg = V4Config(vocab_size=32, n_layers=4, max_seq_len=64)
     m = DeepSeekFlashV4Mini(cfg).eval()

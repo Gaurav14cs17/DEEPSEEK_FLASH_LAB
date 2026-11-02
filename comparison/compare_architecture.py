@@ -2,8 +2,8 @@
 """Print architecture diffs."""
 from _load import load
 
-V4, p4 = load("DeepSeekFlashV4-Mini", "DeepSeekFlashV4Mini")
-V41, p41 = load("DeepSeekFlashV4.1-Mini", "DeepSeekFlashV41Mini")
+V4, p4 = load("deepseek_flash_v4_mini", "DeepSeekFlashV4Mini")
+V41, p41 = load("deepseek_flash_v4_1_mini", "DeepSeekFlashV41Mini")
 c4, c41 = p4("pc"), p41("pc")
 rows = [
     ("layout", f"{c4.n_layers} full-depth", f"{c41.n_encoder_layers}+{c41.n_decoder_layers} CED"),

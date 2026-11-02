@@ -12,7 +12,7 @@ _VER = Path(__file__).resolve().parents[1]
 _REPO = _VER.parents[0]
 # Put verification/ first so `pkg_import` / `reference` resolve; do NOT put both
 # Mini packages on sys.path at once (they share top-level names `model`, etc.).
-for p in (_VER, _REPO):
+for p in (_VER, _REPO, _REPO / "packages"):
     sp = str(p)
     if sp not in sys.path:
         sys.path.insert(0, sp)

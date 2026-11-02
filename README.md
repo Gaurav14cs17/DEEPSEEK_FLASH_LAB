@@ -11,9 +11,9 @@ Learn **DeepSeek-V4-Flash** and **DeepSeek-V4.1-Flash** by building small, train
 ```text
   docs/ (paper)
        ↓
-  DeepSeekFlashV4-Mini   →  V4-Flash ideas (Stage 1 ✅ … Stage 3)
+  deepseek_flash_v4_mini   →  V4-Flash ideas (Stage 1 ✅ … Stage 3)
        ↓
-  DeepSeekFlashV4.1-Mini →  CED / CSA2 / FP4 KV / SWA replay
+  deepseek_flash_v4_1_mini →  CED / CSA2 / FP4 KV / SWA replay
        ↓
   bench/ + results/      →  BEFORE vs AFTER → Improve % → VERDICT
 ```
@@ -38,6 +38,7 @@ jupyter notebook learn/notebooks     # 5 hands-on notebooks
 | [`docs/EXERCISES.md`](docs/EXERCISES.md) | Practice tasks for each session |
 | [`docs/SOLUTIONS.md`](docs/SOLUTIONS.md) | Worked answers |
 | [`docs/CODE_WALKTHROUGH.md`](docs/CODE_WALKTHROUGH.md) | File-by-file source map |
+| [`STRUCTURE.md`](STRUCTURE.md) | Repository layout and import conventions |
 
 ---
 
@@ -46,6 +47,9 @@ jupyter notebook learn/notebooks     # 5 hands-on notebooks
 ```bash
 cd deepseek_flash_lab
 pip install -r requirements.txt
+
+# optional: make the two model packages importable everywhere
+pip install -e .
 
 python scripts/verify_stage01.py          # Stage-1 gate
 python scripts/run_stage01_baseline.py    # formal B0 (required before any opt)
@@ -67,8 +71,8 @@ Deferred stubs (`compression`, `dsa`, V4.1 CED/CSA2, …) stay locked until thei
 | Name | From the reports | Local package |
 |------|------------------|---------------|
 | **DeepSeek-V4** | MoE family; Flash vs Pro scale | concepts |
-| **DeepSeek-V4-Flash** | 284B MoE, ~13B active; CSA–HCA; exact SWA replay ~\(L\times n_{\mathrm{win}}\) | `DeepSeekFlashV4-Mini` |
-| **DeepSeek-V4.1-Flash** | 552B multimodal MoE; CED; CSA2; FP4 KV; SWA Bounded Replay | `DeepSeekFlashV4.1-Mini` |
+| **DeepSeek-V4-Flash** | 284B MoE, ~13B active; CSA–HCA; exact SWA replay ~\(L\times n_{\mathrm{win}}\) | `deepseek_flash_v4_mini` |
+| **DeepSeek-V4.1-Flash** | 552B multimodal MoE; CED; CSA2; FP4 KV; SWA Bounded Replay | `deepseek_flash_v4_1_mini` |
 
 V4.1 must keep prefill vs decode visible:
 
@@ -83,18 +87,28 @@ DECODE:   token  → decoder → global/compressed KV → next token
 
 ```text
 deepseek_flash_lab/
-├── README.md
-├── requirements.txt
+├── README.md · STRUCTURE.md · pyproject.toml · requirements.txt
+├── packages/
+│   ├── deepseek_flash_v4_mini/       # import: deepseek_flash_v4_mini
+│   │   ├── model/ tokenizer/ training/ inference/ optimization/
+│   │   ├── benchmarks/ tests/ paper_notes/
+│   │   └── experiments/core/         # 01…11, numbered by topic
+│   └── deepseek_flash_v4_1_mini/     # import: deepseek_flash_v4_1_mini
+│       ├── model/ tokenizer/ training/ inference/ optimization/
+│       ├── benchmarks/ tests/ paper_notes/
+│       └── experiments/
+│           ├── core/                 # shared V4 primitives
+│           └── v4_1/                 # CED / CSA2 / FP4 KV / SWA replay
 ├── configs/                 # v4_tiny / v4_small / v4_1_*
 ├── datasets/                # Level 0–5 (capped downloads)
-├── docs/                    # paper, progress, optimization_protocol, learning path
-├── learn/                   # beginner tour + notebooks + exercises links
+├── docs/                    # paper, progress, protocol, learning path
+├── learn/                   # beginner tour + notebooks
 ├── bench/                   # BEFORE→AFTER→Δ harness
 ├── scripts/                 # verify + baseline + delta demos
 ├── results/                 # v4/<exp>/<version>/{config,metrics,memory}.json
 ├── comparison/              # optimization_history.csv + A/B scripts
-├── DeepSeekFlashV4-Mini/
-└── DeepSeekFlashV4.1-Mini/  # after V4 Stages 1–3
+├── verification/            # independent audit suite + reports
+└── archive/oldDATA/         # ignored legacy experiments
 ```
 
 ---
@@ -248,12 +262,12 @@ python scripts/verify_stage01.py
 python scripts/run_stage01_baseline.py
 python scripts/run_rope_delta_demo.py
 
-cd DeepSeekFlashV4-Mini
+cd packages/deepseek_flash_v4_mini
 python tests/test_rope.py
 python training/stage01_train.py
 ```
 
-Notebook: `DeepSeekFlashV4-Mini/experiments/01_transformer.ipynb`
+Notebook: `packages/deepseek_flash_v4_mini/experiments/core/01_transformer.ipynb`
 
 ---
 

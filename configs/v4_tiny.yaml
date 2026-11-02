@@ -1,4 +1,4 @@
-# DeepSeekFlashV4-Mini — tiny (≤ ~2 GB VRAM / comfortable CPU)
+# deepseek_flash_v4_mini — tiny (≤ ~2 GB VRAM / comfortable CPU)
 # Stage-1 uses embedding dim + vocab only; later stages read full fields.
 
 vocab_size: 128          # overwritten by fitted char tokenizer

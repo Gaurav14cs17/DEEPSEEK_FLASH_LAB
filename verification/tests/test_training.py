@@ -9,8 +9,8 @@ from pkg_import import import_from_pkg
 
 
 def test_v4_overfit_tiny_batch():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     torch.manual_seed(0)
     cfg = cfg_mod.V4Config(vocab_size=20, n_layers=4, max_seq_len=16, dropout=0.0)
     m = model_mod.DeepSeekFlashV4Mini(cfg)
@@ -38,9 +38,9 @@ def test_v4_overfit_tiny_batch():
 
 
 def test_stage01_modules_gradient():
-    emb_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.embedding")
-    norm_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.normalization")
-    rope_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.rope")
+    emb_mod = import_from_pkg("deepseek_flash_v4_mini", "model.embedding")
+    norm_mod = import_from_pkg("deepseek_flash_v4_mini", "model.normalization")
+    rope_mod = import_from_pkg("deepseek_flash_v4_mini", "model.rope")
     emb = emb_mod.TokenEmbedding(16, 32)
     norm = norm_mod.RMSNorm(32)
     ids = torch.randint(0, 16, (2, 5))

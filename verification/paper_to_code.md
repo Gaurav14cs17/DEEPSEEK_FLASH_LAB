@@ -16,7 +16,7 @@ Deterministic encode/decode for in-vocab characters; OOV → space/0.
 
 ### Implementation
 
-- file: `DeepSeekFlashV4-Mini/tokenizer/tokenizer.py`
+- file: `packages/deepseek_flash_v4_mini/tokenizer/tokenizer.py`
 - class: `CharTokenizer`
 - function: `encode` / `decode`
 
@@ -47,7 +47,7 @@ Normalize last dim; preserve dtype; learnable gain only.
 
 ### Implementation
 
-- file: `DeepSeekFlashV4-Mini/model/normalization.py`
+- file: `packages/deepseek_flash_v4_mini/model/normalization.py`
 - class: `RMSNorm`
 
 ### Verification
@@ -82,7 +82,7 @@ Position-0 identity; L2 norm preserved per head; matches rotate-half reference.
 
 ### Implementation
 
-- file: `DeepSeekFlashV4-Mini/model/rope.py`
+- file: `packages/deepseek_flash_v4_mini/model/rope.py`
 - functions: `rope_freqs`, `apply_rope`, `rope_reference_rotate_half`
 
 ### Verification
@@ -113,7 +113,7 @@ Prefix outputs invariant to future tokens; window blocks distant past.
 
 ### Implementation
 
-- file: `DeepSeekFlashV4-Mini/model/attention.py`
+- file: `packages/deepseek_flash_v4_mini/model/attention.py`
 - classes: `CausalSelfAttention`, `SlidingWindowAttention`
 
 ### Verification

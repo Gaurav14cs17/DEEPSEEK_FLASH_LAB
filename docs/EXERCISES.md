@@ -138,7 +138,7 @@ random inputs (change `torch.manual_seed`).
 
 ### Exercise 9 — Loss and perplexity
 
-Run `python training/stage01_train.py` from `DeepSeekFlashV4-Mini/`.
+Run `python training/stage01_train.py` from `packages/deepseek_flash_v4_mini/`.
 Read `results/stage01/metrics.json`.
 
 1. Compute `exp(validation_loss)` yourself.
@@ -172,7 +172,7 @@ Use the stored RoPE experiment
 
 ## Stretch exercise (optional)
 
-Pick one file from `DeepSeekFlashV4-Mini/model/` that we did not cover
+Pick one file from `packages/deepseek_flash_v4_mini/model/` that we did not cover
 (`mhc.py`, `mtp.py`, `experts.py`, `shared_experts.py`).
 
 Answer the six reading questions from the end of

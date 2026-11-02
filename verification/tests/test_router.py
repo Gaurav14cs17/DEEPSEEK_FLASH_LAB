@@ -10,7 +10,7 @@ from reference import max_mean_abs, reference_router_topk
 
 
 def test_router_matches_reference_for_fixed_gate():
-    rmod = import_from_pkg("DeepSeekFlashV4-Mini", "model.router")
+    rmod = import_from_pkg("deepseek_flash_v4_mini", "model.router")
     torch.manual_seed(0)
     r = rmod.Router(16, n_routed=4, n_activated=2, routed_scaling=1.5)
     flat = torch.randn(6, 16)
@@ -24,7 +24,7 @@ def test_router_matches_reference_for_fixed_gate():
 
 
 def test_router_topk1():
-    rmod = import_from_pkg("DeepSeekFlashV4-Mini", "model.router")
+    rmod = import_from_pkg("deepseek_flash_v4_mini", "model.router")
     r = rmod.Router(8, n_routed=3, n_activated=1, routed_scaling=1.0)
     flat = torch.randn(4, 8)
     topv, topi = r(flat)
@@ -33,7 +33,7 @@ def test_router_topk1():
 
 
 def test_router_equal_logits_normalized():
-    rmod = import_from_pkg("DeepSeekFlashV4-Mini", "model.router")
+    rmod = import_from_pkg("deepseek_flash_v4_mini", "model.router")
     r = rmod.Router(4, n_routed=3, n_activated=2, routed_scaling=1.0)
     with torch.no_grad():
         r.gate.weight.zero_()
@@ -49,7 +49,7 @@ def test_topk_gt_experts_raises_in_reference():
 
 
 def test_hash_router_deterministic():
-    rmod = import_from_pkg("DeepSeekFlashV4-Mini", "model.router")
+    rmod = import_from_pkg("deepseek_flash_v4_mini", "model.router")
     r = rmod.Router(8, n_routed=4, n_activated=2, vocab_size=10, use_hash=True)
     flat = torch.randn(3, 8)
     tokens = torch.tensor([[1, 2, 3]])

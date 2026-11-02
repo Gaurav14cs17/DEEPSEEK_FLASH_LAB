@@ -10,8 +10,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 PACKAGES = [
-    REPO / "DeepSeekFlashV4-Mini",
-    REPO / "DeepSeekFlashV4.1-Mini",
+    REPO / "packages" / "deepseek_flash_v4_mini",
+    REPO / "packages" / "deepseek_flash_v4_1_mini",
 ]
 
 SUSPICIOUS = re.compile(

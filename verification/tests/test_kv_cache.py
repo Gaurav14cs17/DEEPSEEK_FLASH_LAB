@@ -10,8 +10,8 @@ from pkg_import import import_from_pkg
 
 
 def test_v4_kv_estimate_runs():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    kv = import_from_pkg("DeepSeekFlashV4-Mini", "optimization.kv_cache")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    kv = import_from_pkg("deepseek_flash_v4_mini", "optimization.kv_cache")
     cfg = cfg_mod.V4Config()
     stats = kv.estimate_kv(cfg, seq_len=64)
     assert stats.tokens == 64
@@ -20,8 +20,8 @@ def test_v4_kv_estimate_runs():
 
 def test_no_incremental_kv_cache_api():
     """FAIL condition documented: generate() recomputes full context each step."""
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     m = model_mod.DeepSeekFlashV4Mini(
         cfg_mod.V4Config(vocab_size=32, n_layers=4, max_seq_len=32)
     )
@@ -32,8 +32,8 @@ def test_no_incremental_kv_cache_api():
 
 def test_generate_greedy_recompute_only():
     torch.manual_seed(0)
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     m = model_mod.DeepSeekFlashV4Mini(
         cfg_mod.V4Config(vocab_size=32, n_layers=4, max_seq_len=32)
     )

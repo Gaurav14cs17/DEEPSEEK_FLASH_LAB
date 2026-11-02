@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepseek-flash-lab"
+version = "0.2.0"
+description = "Tiny educational DeepSeek-V4 / V4.1 Flash labs that run on CPU or ~2 GB GPU"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.0",
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+    "psutil>=5.9",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+learn = ["jupyter>=1.0", "ipykernel>=6.0", "matplotlib>=3.7"]
+data = ["datasets>=2.14"]
+
+[tool.setuptools]
+package-dir = { "" = "packages" }
+
+[tool.setuptools.packages.find]
+where = ["packages"]
+include = ["deepseek_flash_v4_mini*", "deepseek_flash_v4_1_mini*"]
+
+[tool.pytest.ini_options]
+testpaths = ["verification/tests"]
+pythonpath = ["packages", "."]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+exclude = ["archive", ".git", "__pycache__"]

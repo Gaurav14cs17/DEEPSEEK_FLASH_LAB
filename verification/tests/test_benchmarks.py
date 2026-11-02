@@ -20,8 +20,8 @@ def test_bench_protocol_import():
 
 
 def test_micro_latency_measurable():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     m = model_mod.DeepSeekFlashV4Mini(
         cfg_mod.V4Config(vocab_size=32, n_layers=4, max_seq_len=32)
     ).eval()

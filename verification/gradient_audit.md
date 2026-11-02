@@ -1,6 +1,6 @@
 # Gradient Audit
 
-Scanned `DeepSeekFlashV4-Mini` and `DeepSeekFlashV4.1-Mini` for `detach()`, `no_grad()`, `inference_mode()`, `.data`, `requires_grad=False`.
+Scanned `packages/deepseek_flash_v4_mini` and `packages/deepseek_flash_v4_1_mini` for `detach()`, `no_grad()`, `inference_mode()`, `.data`, `requires_grad=False`.
 
 | Location | Pattern | Intentional? | Notes |
 |----------|---------|--------------|-------|

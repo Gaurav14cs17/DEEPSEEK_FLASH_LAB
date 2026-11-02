@@ -21,16 +21,16 @@ from pathlib import Path
 import torch
 
 REPO = Path(__file__).resolve().parents[1]
-V4 = REPO / "DeepSeekFlashV4-Mini"
+PACKAGES = REPO / "packages"
 sys.path.insert(0, str(REPO))
-sys.path.insert(0, str(V4))
+sys.path.insert(0, str(PACKAGES))
 
-from model.attention import CausalSelfAttention, SlidingWindowAttention  # noqa: E402
-from model.embedding import TokenEmbedding  # noqa: E402
-from model.moe import MoE  # noqa: E402
-from model.normalization import RMSNorm  # noqa: E402
-from model.rope import apply_rope, rope_freqs  # noqa: E402
-from tokenizer import CharTokenizer  # noqa: E402
+from deepseek_flash_v4_mini.model.attention import CausalSelfAttention, SlidingWindowAttention  # noqa: E402
+from deepseek_flash_v4_mini.model.embedding import TokenEmbedding  # noqa: E402
+from deepseek_flash_v4_mini.model.moe import MoE  # noqa: E402
+from deepseek_flash_v4_mini.model.normalization import RMSNorm  # noqa: E402
+from deepseek_flash_v4_mini.model.rope import apply_rope, rope_freqs  # noqa: E402
+from deepseek_flash_v4_mini.tokenizer import CharTokenizer  # noqa: E402
 
 BANNER = "=" * 68
 
@@ -67,8 +67,8 @@ def section0(auto: bool) -> None:
     title("0. Orientation — what is this lab?")
     print(
         "  This repo builds tiny, readable versions of two model families:\n"
-        "    DeepSeekFlashV4-Mini    -> V4-Flash ideas\n"
-        "    DeepSeekFlashV4.1-Mini  -> V4.1-Flash ideas (CED, CSA2, FP4 KV)\n\n"
+        "    deepseek_flash_v4_mini    -> V4-Flash ideas\n"
+        "    deepseek_flash_v4_1_mini  -> V4.1-Flash ideas (CED, CSA2, FP4 KV)\n\n"
         "  The real models have hundreds of billions of parameters.\n"
         "  Here everything is ~1-3 million parameters so it runs on a laptop."
     )

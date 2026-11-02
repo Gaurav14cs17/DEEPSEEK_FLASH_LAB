@@ -9,7 +9,7 @@ from reference import cosine_sim, max_mean_abs, reference_fake_quantize
 
 
 def test_fake_quantize_matches_reference():
-    q = import_from_pkg("DeepSeekFlashV4-Mini", "optimization.quantization")
+    q = import_from_pkg("deepseek_flash_v4_mini", "optimization.quantization")
     torch.manual_seed(0)
     x = torch.randn(8, 16)
     y = q.fake_quantize(x, n_bits=8)
@@ -19,7 +19,7 @@ def test_fake_quantize_matches_reference():
 
 
 def test_mxfp4_sim_error_bounded():
-    q = import_from_pkg("DeepSeekFlashV4-Mini", "optimization.quantization")
+    q = import_from_pkg("deepseek_flash_v4_mini", "optimization.quantization")
     torch.manual_seed(0)
     x = torch.randn(4, 32)
     y = q.mxfp4_sim(x)
@@ -31,9 +31,9 @@ def test_mxfp4_sim_error_bounded():
 
 def test_fp4_not_packed_storage():
     """Public FP4 KV module is deferred; CSA2 sim keeps float tensors."""
-    fp4 = import_from_pkg("DeepSeekFlashV4.1-Mini", "optimization.fp4_kv_cache")
+    fp4 = import_from_pkg("deepseek_flash_v4_1_mini", "optimization.fp4_kv_cache")
     assert getattr(fp4, "DEFERRED", False) is True
-    csa2 = import_from_pkg("DeepSeekFlashV4.1-Mini", "model._csa2")
+    csa2 = import_from_pkg("deepseek_flash_v4_1_mini", "model._csa2")
     m = csa2.CSA2(64, 4, 16, topk=4, compress=2, mode="full", use_fp4=True)
     x = torch.randn(1, 16, 64)
     y, _ = m(x, csa2.SharedGlobalState())

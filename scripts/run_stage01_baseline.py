@@ -18,16 +18,16 @@ import yaml
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
-sys.path.insert(0, str(REPO / "DeepSeekFlashV4-Mini"))
+sys.path.insert(0, str(REPO / "packages"))
 
 from bench.history import append_history  # noqa: E402
 from bench.latency import time_ms  # noqa: E402
 from bench.memory import collect_memory, format_memory_report  # noqa: E402
 from bench.protocol import ExperimentMeta, save_result_bundle  # noqa: E402
 from bench.training_metrics import measure_training_step  # noqa: E402
-from model.rope import apply_rope  # noqa: E402
-from tokenizer import CharTokenizer  # noqa: E402
-from training.stage01_train import (  # noqa: E402
+from deepseek_flash_v4_mini.model.rope import apply_rope  # noqa: E402
+from deepseek_flash_v4_mini.tokenizer import CharTokenizer  # noqa: E402
+from deepseek_flash_v4_mini.training.stage01_train import (  # noqa: E402
     LEVEL0_TEXT,
     Stage01Baseline,
     eval_loss,

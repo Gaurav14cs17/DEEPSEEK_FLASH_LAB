@@ -9,8 +9,8 @@ from reference import cosine_sim, max_mean_abs
 
 
 def test_no_nan_in_v4_forward_backward():
-    cfg_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.config")
-    model_mod = import_from_pkg("DeepSeekFlashV4-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_mini", "model.config")
+    model_mod = import_from_pkg("deepseek_flash_v4_mini", "model.model")
     m = model_mod.DeepSeekFlashV4Mini(cfg_mod.V4Config(vocab_size=24, n_layers=4, max_seq_len=16))
     x = torch.randint(0, 24, (2, 10))
     logits, _ = m(x, trace=False)
@@ -22,7 +22,7 @@ def test_no_nan_in_v4_forward_backward():
 
 
 def test_compression_ratio_csa_tensors():
-    mla = import_from_pkg("DeepSeekFlashV4-Mini", "model.mla")
+    mla = import_from_pkg("deepseek_flash_v4_mini", "model.mla")
     x = torch.randn(2, 32, 64)
     y = mla.compress_overlap(x, m=4)
     assert y.shape[1] < x.shape[1]
@@ -32,8 +32,8 @@ def test_compression_ratio_csa_tensors():
 
 def test_csa_differs_from_dense_causal():
     """DSA/CSA is an approximation — quantify gap vs CausalSelfAttention."""
-    attn = import_from_pkg("DeepSeekFlashV4-Mini", "model.attention")
-    mla = import_from_pkg("DeepSeekFlashV4-Mini", "model.mla")
+    attn = import_from_pkg("deepseek_flash_v4_mini", "model.attention")
+    mla = import_from_pkg("deepseek_flash_v4_mini", "model.mla")
     torch.manual_seed(0)
     x = torch.randn(1, 16, 64)
     dense = attn.CausalSelfAttention(64, 4, 16, use_rope=True)
@@ -48,8 +48,8 @@ def test_csa_differs_from_dense_causal():
 
 def test_v41_replay_zeros_prefix_logits():
     """Known behavior: bounded replay pads prefix logits with zeros."""
-    cfg_mod = import_from_pkg("DeepSeekFlashV4.1-Mini", "model.config")
-    mod = import_from_pkg("DeepSeekFlashV4.1-Mini", "model.model")
+    cfg_mod = import_from_pkg("deepseek_flash_v4_1_mini", "model.config")
+    mod = import_from_pkg("deepseek_flash_v4_1_mini", "model.model")
     cfg = cfg_mod.ToyConfig(use_vision=False, use_dspark=False, swa_window=8)
     m = mod.ToyDSV41(cfg).eval()
     x = torch.randint(0, cfg.vocab_size, (1, 20))

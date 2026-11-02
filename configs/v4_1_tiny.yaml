@@ -1,4 +1,4 @@
-# DeepSeekFlashV4.1-Mini — tiny CED scale (stage deferred until V4 passes)
+# deepseek_flash_v4_1_mini — tiny CED scale (stage deferred until V4 passes)
 vocab_size: 128
 d_model: 64
 n_heads: 4
