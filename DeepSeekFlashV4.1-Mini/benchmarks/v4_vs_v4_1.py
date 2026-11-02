@@ -3,21 +3,11 @@
 
 from __future__ import annotations
 
+import importlib
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO / "DeepSeekFlashV4-Mini"))
-sys.path.insert(0, str(REPO / "DeepSeekFlashV4.1-Mini"))
-
-from model import DeepSeekFlashV4Mini, preset as preset_v4  # type: ignore  # noqa: E402
-
-# reload v4.1 under alias — clear conflicting 'model'
-import importlib
-
-sys.path.insert(0, str(REPO / "DeepSeekFlashV4.1-Mini"))
-# Import v41 by path
-import importlib.util
 
 
 def load_pkg_model(pkg_dir: Path, attr: str):

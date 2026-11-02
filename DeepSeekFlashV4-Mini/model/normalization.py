@@ -4,6 +4,13 @@
 Cited in DeepSeek-V4.1-Flash report for ViT / backbone normalization practice;
 DeepSeek stacks use RMSNorm rather than LayerNorm in the LLM path.
 
+In plain English
+----------------
+Deep networks can make activations grow or shrink layer by layer. RMSNorm
+rescales each vector so its typical magnitude stays near 1, then lets the model
+learn a per-feature gain (gamma). It does not subtract the mean and has no bias,
+which makes it cheaper than LayerNorm.
+
 Math
 ----
 Given x ∈ R^{d}:

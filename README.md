@@ -20,6 +20,27 @@ Learn **DeepSeek-V4-Flash** and **DeepSeek-V4.1-Flash** by building small, train
 
 ---
 
+## New here? Start with the beginner path
+
+Everything below is the research lab. If you are new to transformers, begin
+with the learning layer instead:
+
+```bash
+python learn/tour.py                 # 10-minute guided tour (CPU only)
+jupyter notebook learn/notebooks     # 5 hands-on notebooks
+```
+
+| Resource | What it gives you |
+|----------|-------------------|
+| [`docs/LEARNING_PATH.md`](docs/LEARNING_PATH.md) | 7-session curriculum, beginner → measurement |
+| [`learn/tour.py`](learn/tour.py) | Interactive CLI tour of every core component |
+| [`learn/notebooks/`](learn/notebooks) | Tokens, RMSNorm/RoPE, attention, MoE, measurement |
+| [`docs/EXERCISES.md`](docs/EXERCISES.md) | Practice tasks for each session |
+| [`docs/SOLUTIONS.md`](docs/SOLUTIONS.md) | Worked answers |
+| [`docs/CODE_WALKTHROUGH.md`](docs/CODE_WALKTHROUGH.md) | File-by-file source map |
+
+---
+
 ## Quick start
 
 ```bash
@@ -66,7 +87,8 @@ deepseek_flash_lab/
 ├── requirements.txt
 ├── configs/                 # v4_tiny / v4_small / v4_1_*
 ├── datasets/                # Level 0–5 (capped downloads)
-├── docs/                    # paper, progress, optimization_protocol
+├── docs/                    # paper, progress, optimization_protocol, learning path
+├── learn/                   # beginner tour + notebooks + exercises links
 ├── bench/                   # BEFORE→AFTER→Δ harness
 ├── scripts/                 # verify + baseline + delta demos
 ├── results/                 # v4/<exp>/<version>/{config,metrics,memory}.json
@@ -216,6 +238,10 @@ Locked until V4 Stages 1–3 complete. Rows appear only after B0+B1 JSON exists 
 
 ```bash
 pip install -r requirements.txt
+
+# Learn (beginner)
+python learn/tour.py
+jupyter notebook learn/notebooks
 
 # Stage 1
 python scripts/verify_stage01.py

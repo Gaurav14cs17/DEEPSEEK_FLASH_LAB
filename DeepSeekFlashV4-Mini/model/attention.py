@@ -1,4 +1,26 @@
-"""Sliding-window + causal multi-head attention."""
+"""Sliding-window + causal multi-head attention.
+
+In plain English
+----------------
+Attention answers one question for every token: *which earlier tokens should I
+read, and how much?* Each token emits a query (q), a key (k), and a value (v).
+Scores come from q·k; a softmax turns them into weights; the output is a
+weighted average of v.
+
+Two masks appear here:
+  - causal: token t may read tokens <= t (never the future);
+  - sliding window: token t may also read only the last `window` tokens.
+
+Shapes
+------
+input      [B, T, d_model]
+q, k, v    [B, H, T, d_head]
+scores     [B, H, T, T]
+output     [B, T, d_model]
+
+Cost: the score matrix is O(T²) per head. The sliding window caps how many
+keys are allowed, which is the cheap long-context trick.
+"""
 
 from __future__ import annotations
 

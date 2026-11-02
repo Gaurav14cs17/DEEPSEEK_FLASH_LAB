@@ -1,4 +1,18 @@
-"""DeepSeekFlashV4-Mini — V4-Flash educational model (CSA–HCA, mHC, MTP)."""
+"""DeepSeekFlashV4-Mini — V4-Flash educational model (CSA–HCA, mHC, MTP).
+
+In plain English
+----------------
+This file glues the pieces together:
+
+    tokens -> embedding -> N decoder blocks -> RMSNorm -> LM head -> logits
+
+Each decoder block is roughly "attention, then MoE", with residual connections
+that let gradients skip past a block. The output is a score for every vocabulary
+token at every position; training compares those scores with the next token.
+
+The real V4-Flash is enormous. This Mini keeps the *layout* (SWA, CSA, HCA,
+MoE) and shrinks every dimension until it fits on a laptop.
+"""
 
 from __future__ import annotations
 

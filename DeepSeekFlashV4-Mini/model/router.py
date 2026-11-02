@@ -1,4 +1,16 @@
-"""MoE router: learned sqrt-softplus gate + optional hash bootstrap."""
+"""MoE router: learned sqrt-softplus gate + optional hash bootstrap.
+
+In plain English
+----------------
+The router is a small classifier that scores every expert for every token. It
+keeps the top-k scores, normalizes them into weights, and returns both the
+weights and the expert IDs. `HashGate` is the simpler alternative used by the
+first MoE layers: a fixed table from token ID to expert, with no learning.
+
+The `bias` buffer is not a learned parameter. During training it is nudged so
+over-used experts get a slightly lower score next time, which helps balance the
+load across experts.
+"""
 
 from __future__ import annotations
 

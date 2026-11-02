@@ -7,6 +7,11 @@ Official paper extract for this lab:
 | `DeepSeek_V41_Tech_Report.pdf` | Primary technical report |
 | `DeepSeek_V41_Tech_Report.txt` | Searchable text |
 | `progress.md` | Implementation gate checklist |
+| `LEARNING_PATH.md` | **Beginner curriculum — start here** |
+| `CODE_WALKTHROUGH.md` | File-by-file plain-language source map |
+| `EXERCISES.md` | Practice tasks for each session |
+| `SOLUTIONS.md` | Worked answers |
+| `optimization_protocol.md` | Mandatory measurement rules |
 
 Paper → Mini mapping starts in:
 

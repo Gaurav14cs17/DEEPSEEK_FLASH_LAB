@@ -1,4 +1,24 @@
-"""DeepSeekMoE: shared + routed experts."""
+"""DeepSeekMoE: shared + routed experts.
+
+In plain English
+----------------
+A normal feed-forward layer runs the same weights for every token. A Mixture of
+Experts instead keeps many expert networks and lets a router choose a few per
+token:
+
+    shared experts  -> always run (common knowledge)
+    routed experts  -> only the top-k selected by the router run
+
+So the model can have lots of parameters while each token pays for only a small
+slice of them. The router log's histogram tells you whether the load is healthy:
+if one expert receives almost every token, the others never learn.
+
+Shapes
+------
+input / output: [B, T, d_model]
+flat tokens:    [B*T, d_model]
+router output:  values [B*T, k], indices [B*T, k]
+"""
 
 from __future__ import annotations
 

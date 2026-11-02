@@ -4,6 +4,22 @@
 Paper note (V4.1 report): RoPE preserves vector norm; KV quantization is applied
 *after* RoPE (quantize-before-RoPE yields only marginal gains).
 
+In plain English
+----------------
+Attention compares a query vector with key vectors using a dot product. That
+comparison has no idea where the tokens are. RoPE fixes this by rotating each
+query/key by an angle proportional to its position:
+
+    position 0 -> angle 0
+    position 1 -> angle θ
+    position 2 -> angle 2θ
+    ...
+
+Two useful consequences:
+  1. Rotation preserves length, so q·k magnitudes stay stable.
+  2. dot(rotated q at i, rotated k at j) depends on (i - j), not on i and j
+     separately. The model sees *relative* distance.
+
 Math (per head dimension pairs)
 -------------------------------
 For dimension pair (2i, 2i+1) at position t with base θ:

@@ -4,6 +4,16 @@
 Paper path: input embedding before the Transformer / CED stack
 (DeepSeek-V4.1-Flash Fig. 3; same role in V4-Flash).
 
+In plain English
+----------------
+The model cannot read text. A tokenizer first turns each token into an integer
+ID. This module owns one trainable vector per ID and looks it up:
+
+    vector = E[token_id]
+
+That is the whole operation — a row lookup, not a matrix multiplication.
+Training changes E; inference only reads it.
+
 Shapes
 ------
 tokens:  [B, T] long

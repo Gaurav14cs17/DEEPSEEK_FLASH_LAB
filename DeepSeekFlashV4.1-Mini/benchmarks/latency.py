@@ -15,8 +15,9 @@ from model import DeepSeekFlashV41Mini, preset
 
 
 def main() -> None:
-    cfg = preset("pc"); cfg.use_vision=False
-m = DeepSeekFlashV41Mini(cfg)
+    cfg = preset("pc")
+    cfg.use_vision = False
+    m = DeepSeekFlashV41Mini(cfg)
     m.eval()
     x = torch.randint(0, m.cfg.vocab_size, (4, 64))
     # warmup

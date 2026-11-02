@@ -11,7 +11,7 @@ def step(model, x, y):
         logits, _ = model(x, trace=False)
     loss = F.cross_entropy(logits.reshape(-1, logits.size(-1)), y.reshape(-1))
     loss.backward()
-    return float(loss)
+    return float(loss.detach())
 
 V4, p4 = load("DeepSeekFlashV4-Mini", "DeepSeekFlashV4Mini")
 m4 = V4(p4("demo"))

@@ -1,4 +1,18 @@
-"""Decoder / transformer blocks: SWA | CSA | HCA + MoE + multi-pass mHC."""
+"""Decoder / transformer blocks: SWA | CSA | HCA + MoE + multi-pass mHC.
+
+In plain English
+----------------
+One block is two sublayers wrapped in residual adds:
+
+    h  = norm1(x)
+    y  = attention(h)
+    y2 = moe(norm2(x + y))
+    x  = x + y + y2
+
+Normalize first (pre-norm), compute a sublayer, add it back. The residual path
+is what makes a deep stack trainable: gradients can travel straight to earlier
+layers instead of passing through every nonlinearity.
+"""
 
 from __future__ import annotations
 
