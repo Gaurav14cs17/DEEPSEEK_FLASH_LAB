@@ -20,6 +20,15 @@ Then open the notebooks:
 jupyter notebook learn/notebooks
 ```
 
+Qwen family notebooks live with their packages:
+
+```bash
+jupyter notebook packages/qwen2_5_mini/experiments/core
+jupyter notebook packages/qwen3_next_mini/experiments/core
+```
+
+See [`docs/QWEN_FAMILIES.md`](../docs/QWEN_FAMILIES.md).
+
 ## Notebooks
 
 | Notebook | Topic | Session |

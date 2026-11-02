@@ -83,6 +83,29 @@ DECODE:   token  → decoder → global/compressed KV → next token
 
 ---
 
+## Qwen Mini families (optional extension)
+
+Five Qwen-family Minis share one core (`packages/qwen_common/`) and the same
+package layout, tests, notebooks, and B0 protocol:
+
+| Package | Mechanism | Notebook |
+|---------|-----------|----------|
+| `qwen2_5_mini` | GQA + RoPE + SwiGLU, dense + MoE | `experiments/core/01_qwen2_5_mini.ipynb` |
+| `qwen3_mini` | QK-Norm + thinking/non-thinking mode | `experiments/core/01_qwen3_mini.ipynb` |
+| `qwen3_next_mini` | hybrid gated linear + full attention | `experiments/core/01_qwen3_next_mini.ipynb` |
+| `qwen3_vl_mini` | tiny ViT + projector + text decoder | `experiments/core/01_qwen3_vl_mini.ipynb` |
+| `qwq_mini` | long-CoT reasoning format | `experiments/core/01_qwq_mini.ipynb` |
+
+```bash
+python scripts/record_qwen_baselines.py   # B0 for every Qwen family
+python comparison/compare_qwen.py         # params + latency table
+```
+
+Full guide: [`docs/QWEN_FAMILIES.md`](docs/QWEN_FAMILIES.md). These are
+architecture labs, not reproductions of Qwen's trained quality.
+
+---
+
 ## Repo map
 
 ```text
@@ -93,19 +116,25 @@ deepseek_flash_lab/
 │   │   ├── model/ tokenizer/ training/ inference/ optimization/
 │   │   ├── benchmarks/ tests/ paper_notes/
 │   │   └── experiments/core/         # 01…11, numbered by topic
-│   └── deepseek_flash_v4_1_mini/     # import: deepseek_flash_v4_1_mini
-│       ├── model/ tokenizer/ training/ inference/ optimization/
-│       ├── benchmarks/ tests/ paper_notes/
-│       └── experiments/
-│           ├── core/                 # shared V4 primitives
-│           └── v4_1/                 # CED / CSA2 / FP4 KV / SWA replay
+│   ├── deepseek_flash_v4_1_mini/     # import: deepseek_flash_v4_1_mini
+│   │   ├── model/ tokenizer/ training/ inference/ optimization/
+│   │   ├── benchmarks/ tests/ paper_notes/
+│   │   └── experiments/
+│   │       ├── core/                 # shared V4 primitives
+│   │       └── v4_1/                 # CED / CSA2 / FP4 KV / SWA replay
+│   ├── qwen_common/                  # shared Qwen primitives
+│   ├── qwen2_5_mini/                 # GQA + MoE
+│   ├── qwen3_mini/                   # QK-Norm + thinking mode
+│   ├── qwen3_next_mini/              # hybrid linear/full attention
+│   ├── qwen3_vl_mini/                # tiny ViT + text decoder
+│   └── qwq_mini/                     # long-CoT reasoning format
 ├── configs/                 # v4_tiny / v4_small / v4_1_*
 ├── datasets/                # Level 0–5 (capped downloads)
 ├── docs/                    # paper, progress, protocol, learning path
 ├── learn/                   # beginner tour + notebooks
 ├── bench/                   # BEFORE→AFTER→Δ harness
 ├── scripts/                 # verify + baseline + delta demos
-├── results/                 # v4/<exp>/<version>/{config,metrics,memory}.json
+├── results/                 # v4/… and qwen/<family>/baseline/ bundles
 ├── comparison/              # optimization_history.csv + A/B scripts
 ├── verification/            # independent audit suite + reports
 └── archive/oldDATA/         # ignored legacy experiments

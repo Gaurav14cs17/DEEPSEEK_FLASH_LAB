@@ -12,6 +12,12 @@ REPO = Path(__file__).resolve().parents[1]
 PACKAGES = [
     REPO / "packages" / "deepseek_flash_v4_mini",
     REPO / "packages" / "deepseek_flash_v4_1_mini",
+    REPO / "packages" / "qwen_common",
+    REPO / "packages" / "qwen2_5_mini",
+    REPO / "packages" / "qwen3_mini",
+    REPO / "packages" / "qwen3_next_mini",
+    REPO / "packages" / "qwen3_vl_mini",
+    REPO / "packages" / "qwq_mini",
 ]
 
 SUSPICIOUS = re.compile(

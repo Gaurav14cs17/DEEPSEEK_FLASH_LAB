@@ -19,3 +19,4 @@ Scripts:
 | `compare_training.py` | available |
 | `compare_kv_cache.py` | stub until KV stages land |
 | `compare_accuracy.py` | stub until longer trains land |
+| `compare_qwen.py` | Qwen Mini families + V4 parameter/latency reference |

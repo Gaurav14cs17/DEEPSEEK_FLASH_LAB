@@ -8,9 +8,15 @@ breaking the others.
 deepseek_flash_lab/
 ├── packages/                 # importable model libraries
 │   ├── deepseek_flash_v4_mini/
-│   └── deepseek_flash_v4_1_mini/
+│   ├── deepseek_flash_v4_1_mini/
+│   ├── qwen_common/          # shared Qwen primitives
+│   ├── qwen2_5_mini/
+│   ├── qwen3_mini/
+│   ├── qwen3_next_mini/
+│   ├── qwen3_vl_mini/
+│   └── qwq_mini/
 ├── bench/                    # measurement harness (B0 → B1 → Δ)
-├── comparison/               # A/B scripts for the two Minis
+├── comparison/               # A/B scripts for all Mini families
 ├── configs/                  # YAML presets
 ├── datasets/                 # capped data loaders + Level-0 shard
 ├── docs/                     # paper, protocol, learning path, exercises
@@ -27,11 +33,14 @@ deepseek_flash_lab/
 
 ## 1. Packages are importable
 
-Both model families are real Python packages under `packages/`:
+All model families are real Python packages under `packages/`:
 
 ```python
 from deepseek_flash_v4_mini import DeepSeekFlashV4Mini, preset
 from deepseek_flash_v4_1_mini import DeepSeekFlashV41Mini, preset
+from qwen2_5_mini import Qwen25Model
+from qwen3_next_mini import Qwen3NextModel
+from qwen3_vl_mini import Qwen3VLMini
 ```
 
 No more hyphenated folders and no more `sys.path` collision between two
@@ -51,7 +60,9 @@ once, at their entry point.
 
 ## 2. One package = one model family
 
-Each package has the same internal layout:
+The two DeepSeek packages have the full internal layout below. The Qwen
+packages share `qwen_common/` and keep only the parts they need (`model/`,
+`tests/`, `benchmarks/`, `paper_notes/`, `experiments/`).
 
 | Directory | Responsibility |
 |-----------|----------------|
@@ -107,6 +118,7 @@ Do **not** add a second `sys.path` hack in a library module.
 | a KV/quantization idea | `packages/<pkg>/optimization/` |
 | a micro-benchmark | `packages/<pkg>/benchmarks/` |
 | a teaching notebook | `packages/<pkg>/experiments/core/` or `v4_1/` |
+| a Qwen family | `packages/qwen_<family>_mini/`, sharing `qwen_common` |
 | a formal A/B experiment | `scripts/` + output under `results/` |
 | a cross-model comparison | `comparison/` |
 | an audit/check | `verification/tests/` |

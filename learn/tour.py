@@ -31,6 +31,11 @@ from deepseek_flash_v4_mini.model.moe import MoE  # noqa: E402
 from deepseek_flash_v4_mini.model.normalization import RMSNorm  # noqa: E402
 from deepseek_flash_v4_mini.model.rope import apply_rope, rope_freqs  # noqa: E402
 from deepseek_flash_v4_mini.tokenizer import CharTokenizer  # noqa: E402
+from qwen2_5_mini import Qwen25Model, preset as qwen25_preset  # noqa: E402
+from qwen3_mini import Qwen3Model, preset as qwen3_preset  # noqa: E402
+from qwen3_next_mini import Qwen3NextModel, preset as qwen_next_preset  # noqa: E402
+from qwen3_vl_mini import Qwen3VLMini, preset as qwen_vl_preset  # noqa: E402
+from qwq_mini import QwQMini, preset as qwq_preset  # noqa: E402
 
 BANNER = "=" * 68
 
@@ -85,7 +90,7 @@ def section0(auto: bool) -> None:
     ):
         print(line)
     observe("A slower candidate is a valid result. The verdict can be REGRESSION.")
-    print("\n  Next sections: tokens -> embeddings -> norm -> positions -> attention -> MoE -> measurement.")
+    print("\n  Next sections: tokens -> embeddings -> norm -> positions -> attention -> MoE -> measurement -> Qwen.")
 
 
 # --------------------------------------------------------------------------
@@ -318,7 +323,40 @@ def section7(auto: bool) -> None:
     print("    python scripts/run_rope_delta_demo.py")
 
 
-SECTIONS = [section0, section1, section2, section3, section4, section5, section6, section7]
+# --------------------------------------------------------------------------
+# 8 — Qwen families
+# --------------------------------------------------------------------------
+def section8(auto: bool) -> None:
+    title("8. Qwen Mini families — same ideas, different trade-offs")
+    families = [
+        ("Qwen2.5", Qwen25Model, qwen25_preset),
+        ("Qwen3", Qwen3Model, qwen3_preset),
+        ("Qwen3-Next", Qwen3NextModel, qwen_next_preset),
+        ("Qwen3-VL", Qwen3VLMini, qwen_vl_preset),
+        ("QwQ", QwQMini, qwq_preset),
+    ]
+    print(f"  {'family':12s} {'params':>10s} {'active':>10s}")
+    print("  " + "-" * 36)
+    for name, cls, preset in families:
+        model = cls(preset("demo"))
+        print(
+            f"  {name:12s} {model.num_parameters():10,d} "
+            f"{model.active_parameters():10,d}"
+        )
+    note(
+        "All five share qwen_common: RMSNorm, RoPE, GQA, SwiGLU, and a top-k "
+        "MoE. The family packages only add their distinguishing mechanism."
+    )
+    cfg = qwen_next_preset("pc")
+    print(f"\n  Qwen3-Next layer pattern: {cfg.layer_pattern}")
+    observe("Linear layers cost O(T); full-attention layers keep global recall.")
+    print("\n  Explore:")
+    print("    docs/QWEN_FAMILIES.md")
+    print("    packages/qwen3_next_mini/experiments/core")
+    print("    python comparison/compare_qwen.py")
+
+
+SECTIONS = [section0, section1, section2, section3, section4, section5, section6, section7, section8]
 
 
 def main() -> None:
@@ -354,6 +392,7 @@ def main() -> None:
     print("    learn/notebooks/            hands-on notebooks")
     print("    docs/EXERCISES.md           practice tasks")
     print("    docs/SOLUTIONS.md           worked answers")
+    print("    docs/QWEN_FAMILIES.md       Qwen Mini family guide")
 
 
 if __name__ == "__main__":

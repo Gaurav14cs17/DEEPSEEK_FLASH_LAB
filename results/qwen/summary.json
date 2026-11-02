@@ -1,0 +1,67 @@
+{
+  "qwen2_5": {
+    "model": "Qwen2.5-Mini",
+    "dir": "results/qwen/qwen2_5/baseline",
+    "parameters": 250432,
+    "trainable_parameters": 250432,
+    "active_parameters": 250432,
+    "peak_gpu_memory_mb": 0.0,
+    "peak_cpu_memory_mb": 623.359,
+    "forward_ms": 1.235123083461076,
+    "p50_latency_ms": 1.258651027455926,
+    "p95_latency_ms": 1.2769759632647038,
+    "tokens_per_second": 25908.349077509938
+  },
+  "qwen3": {
+    "model": "Qwen3-Mini",
+    "dir": "results/qwen/qwen3/baseline",
+    "parameters": 250560,
+    "trainable_parameters": 250560,
+    "active_parameters": 250560,
+    "peak_gpu_memory_mb": 0.0,
+    "peak_cpu_memory_mb": 624.551,
+    "forward_ms": 1.5721854870207608,
+    "p50_latency_ms": 1.5669099520891905,
+    "p95_latency_ms": 1.6320219729095697,
+    "tokens_per_second": 20353.83246072252
+  },
+  "qwen3_next": {
+    "model": "Qwen3-Next-Mini",
+    "dir": "results/qwen/qwen3_next/baseline",
+    "parameters": 953696,
+    "trainable_parameters": 953696,
+    "active_parameters": 363872,
+    "peak_gpu_memory_mb": 0.0,
+    "peak_cpu_memory_mb": 633.945,
+    "forward_ms": 6.597397779114544,
+    "p50_latency_ms": 6.585104041732848,
+    "p95_latency_ms": 6.955197895877063,
+    "tokens_per_second": 4850.397243183177
+  },
+  "qwen3_vl": {
+    "model": "Qwen3-VL-Mini",
+    "dir": "results/qwen/qwen3_vl/baseline",
+    "parameters": 368192,
+    "trainable_parameters": 368192,
+    "active_parameters": 368192,
+    "peak_gpu_memory_mb": 0.0,
+    "peak_cpu_memory_mb": 633.949,
+    "forward_ms": 1.5484276111237705,
+    "p50_latency_ms": 1.5603669453412294,
+    "p95_latency_ms": 1.5782200498506427,
+    "tokens_per_second": 20666.125926788412
+  },
+  "qwq": {
+    "model": "QwQ-Mini",
+    "dir": "results/qwen/qwq/baseline",
+    "parameters": 250560,
+    "trainable_parameters": 250560,
+    "active_parameters": 250560,
+    "peak_gpu_memory_mb": 0.0,
+    "peak_cpu_memory_mb": 633.957,
+    "forward_ms": 1.567478512879461,
+    "p50_latency_ms": 1.5590040711686015,
+    "p95_latency_ms": 1.616692985408008,
+    "tokens_per_second": 20414.952892219197
+  }
+}

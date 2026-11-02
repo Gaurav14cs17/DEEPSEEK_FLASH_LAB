@@ -8,7 +8,7 @@
     "gpu_vram_gb": null
   },
   "micro_latency": {
-    "prefill_T64_ms": 6.395
+    "prefill_T64_ms": 6.011
   },
   "stage01_baseline_exists": true,
   "stage01_baseline": {

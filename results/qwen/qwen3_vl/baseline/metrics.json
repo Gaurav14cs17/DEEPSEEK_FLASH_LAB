@@ -1,0 +1,11 @@
+{
+  "parameters": 368192,
+  "trainable_parameters": 368192,
+  "active_parameters": 368192,
+  "peak_gpu_memory_mb": 0.0,
+  "peak_cpu_memory_mb": 633.949,
+  "forward_ms": 1.5484276111237705,
+  "p50_latency_ms": 1.5603669453412294,
+  "p95_latency_ms": 1.5782200498506427,
+  "tokens_per_second": 20666.125926788412
+}

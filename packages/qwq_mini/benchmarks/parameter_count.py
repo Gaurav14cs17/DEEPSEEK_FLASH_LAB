@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""Parameter counts for qwq_mini presets."""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+PACKAGES = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(PACKAGES))
+
+from qwq_mini import QwQMini, preset
+
+
+def main() -> None:
+    for preset_name in ("demo", "pc", "better"):
+        cfg = preset(preset_name)
+        for label, cls in (('QwQMini', QwQMini),):
+            model = cls(cfg)
+            print(f"{preset_name:8s} {label:16s} params={model.num_parameters():,}")
+            break
+
+
+if __name__ == "__main__":
+    main()

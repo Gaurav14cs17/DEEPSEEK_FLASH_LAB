@@ -25,10 +25,27 @@ package-dir = { "" = "packages" }
 
 [tool.setuptools.packages.find]
 where = ["packages"]
-include = ["deepseek_flash_v4_mini*", "deepseek_flash_v4_1_mini*"]
+include = [
+    "deepseek_flash_v4_mini*",
+    "deepseek_flash_v4_1_mini*",
+    "qwen_common*",
+    "qwen2_5_mini*",
+    "qwen3_mini*",
+    "qwen3_next_mini*",
+    "qwen3_vl_mini*",
+    "qwq_mini*",
+]
 
 [tool.pytest.ini_options]
-testpaths = ["verification/tests"]
+testpaths = [
+    "verification/tests",
+    "packages/qwen_common/tests",
+    "packages/qwen2_5_mini/tests",
+    "packages/qwen3_mini/tests",
+    "packages/qwen3_next_mini/tests",
+    "packages/qwen3_vl_mini/tests",
+    "packages/qwq_mini/tests",
+]
 pythonpath = ["packages", "."]
 addopts = "-ra"
 

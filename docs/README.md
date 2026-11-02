@@ -12,6 +12,7 @@ Official paper extract for this lab:
 | `EXERCISES.md` | Practice tasks for each session |
 | `SOLUTIONS.md` | Worked answers |
 | `optimization_protocol.md` | Mandatory measurement rules |
+| `QWEN_FAMILIES.md` | Qwen Mini packages, fidelity, baselines |
 
 Paper → Mini mapping starts in:
 

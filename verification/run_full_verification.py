@@ -6,7 +6,8 @@ Runs:
   2) full pytest suite under verification/tests
   3) numerical suite
   4) benchmark verification
-  5) writes a machine-readable summary JSON
+  5) Qwen family tests
+  6) writes a machine-readable summary JSON
 
 Human-readable reports live alongside this script:
   IMPLEMENTATION_INVENTORY.md
@@ -45,6 +46,17 @@ def main() -> int:
     )
     summary["steps"].append(run([sys.executable, str(VER / "run_numerical_verification.py")]))
     summary["steps"].append(run([sys.executable, str(VER / "run_benchmark_verification.py")]))
+    qwen_tests = [
+        ROOT / "packages" / "qwen_common" / "tests",
+        ROOT / "packages" / "qwen2_5_mini" / "tests",
+        ROOT / "packages" / "qwen3_mini" / "tests",
+        ROOT / "packages" / "qwen3_next_mini" / "tests",
+        ROOT / "packages" / "qwen3_vl_mini" / "tests",
+        ROOT / "packages" / "qwq_mini" / "tests",
+    ]
+    summary["steps"].append(
+        run([sys.executable, "-m", "pytest", "-q", *[str(p) for p in qwen_tests]])
+    )
 
     failed = [s for s in summary["steps"] if s["returncode"] != 0]
     summary["ok"] = len(failed) == 0

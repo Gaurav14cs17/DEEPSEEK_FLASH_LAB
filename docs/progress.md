@@ -69,6 +69,22 @@ Do not mark a component **done** until: paper note + code + unit test + tiny tra
 
 ---
 
+## Qwen Mini extension (independent track)
+
+These packages are an **optional** architecture extension. They do not unlock or
+replace the DeepSeek stage gates above.
+
+- [x] shared `qwen_common` primitives
+- [x] `qwen2_5_mini` dense + MoE
+- [x] `qwen3_mini` QK-Norm + thinking mode
+- [x] `qwen3_next_mini` hybrid linear/full attention
+- [x] `qwen3_vl_mini` tiny ViT + projector
+- [x] `qwq_mini` reasoning format helpers
+- [x] package tests + verification tests
+- [x] B0 baseline bundles in `results/qwen/`
+
+---
+
 ## How to verify Stage 1 + bench harness
 
 ```bash

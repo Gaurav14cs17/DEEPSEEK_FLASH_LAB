@@ -17,7 +17,7 @@
         "/home/ggoswami/Downloads/deepseek_flash_lab/verification/tests"
       ],
       "returncode": 0,
-      "seconds": 7.67
+      "seconds": 6.686
     },
     {
       "cmd": [
@@ -25,7 +25,7 @@
         "/home/ggoswami/Downloads/deepseek_flash_lab/verification/run_numerical_verification.py"
       ],
       "returncode": 0,
-      "seconds": 2.634
+      "seconds": 2.536
     },
     {
       "cmd": [
@@ -33,7 +33,23 @@
         "/home/ggoswami/Downloads/deepseek_flash_lab/verification/run_benchmark_verification.py"
       ],
       "returncode": 0,
-      "seconds": 3.904
+      "seconds": 3.865
+    },
+    {
+      "cmd": [
+        "/home/ggoswami/miniforge3/bin/python3",
+        "-m",
+        "pytest",
+        "-q",
+        "/home/ggoswami/Downloads/deepseek_flash_lab/packages/qwen_common/tests",
+        "/home/ggoswami/Downloads/deepseek_flash_lab/packages/qwen2_5_mini/tests",
+        "/home/ggoswami/Downloads/deepseek_flash_lab/packages/qwen3_mini/tests",
+        "/home/ggoswami/Downloads/deepseek_flash_lab/packages/qwen3_next_mini/tests",
+        "/home/ggoswami/Downloads/deepseek_flash_lab/packages/qwen3_vl_mini/tests",
+        "/home/ggoswami/Downloads/deepseek_flash_lab/packages/qwq_mini/tests"
+      ],
+      "returncode": 0,
+      "seconds": 2.522
     }
   ],
   "ok": true,

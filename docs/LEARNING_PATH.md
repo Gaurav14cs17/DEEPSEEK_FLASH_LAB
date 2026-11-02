@@ -231,6 +231,33 @@ Important: these are **educational** implementations. The stage gates in
 
 ---
 
+### Session 8 (optional) — Qwen Mini families (90 min)
+
+**Goal:** compare five Qwen-family mechanisms at the same tiny scale.
+
+Read: [`QWEN_FAMILIES.md`](QWEN_FAMILIES.md)
+
+Run:
+```bash
+python packages/qwen_common/benchmarks/parameter_count.py
+python scripts/record_qwen_baselines.py
+python comparison/compare_qwen.py
+jupyter notebook packages/qwen3_next_mini/experiments/core
+```
+
+What to notice:
+- Qwen2.5 and Qwen3 are standard decoders; Qwen3 adds QK-Norm.
+- Qwen3-Next mixes O(T) gated linear attention with periodic full attention.
+- Qwen3-VL prepends projected image patches to text tokens.
+- QwQ is a Qwen3-style decoder plus a reasoning format, not a new block.
+- The Qwen packages share `qwen_common`, so differences are visible.
+
+Checkpoint: name one thing Qwen3-Next saves compared with full attention, and
+one thing it gives up. (Answer: linear-time state instead of an O(T²) score
+matrix; exact token-to-token recall is weaker.)
+
+---
+
 ## Suggested pace
 
 | Week | Sessions | Outcome |
@@ -239,6 +266,7 @@ Important: these are **educational** implementations. The stage gates in
 | 2 | 3, 4 | Understand attention and MoE |
 | 3 | 5, 6 | Train and measure honestly |
 | 4 | 7 | Explore V4.1 ideas |
+| 5 | 8 | Compare the Qwen families |
 
 ## How to know you learned it
 
